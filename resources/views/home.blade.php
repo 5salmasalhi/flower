@@ -19,7 +19,7 @@
                             </a>
                         </div>
                         <div class="md:w-1/2 p-4">
-                            <img src="{{ asset('storage/hero-image.jpg') }}" alt="Beautiful flower arrangement" class="rounded-lg shadow-md">
+                            <img src="{{ asset('storage/products/pocket.webp') }}" alt="Beautiful flower arrangement" class="rounded-lg shadow-md w-44 h-44 justify-content-center" >
                         </div>
                     </div>
                 </div>
@@ -31,13 +31,9 @@
                 @forelse ($featuredProducts as $product)
                     <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                         <a href="{{ route('products.show', $product) }}">
-                            @if ($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
-                            @else
-                                <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                                    <span class="text-gray-500">No image</span>
-                                </div>
-                            @endif
+                           
+                                <img src="{{ asset(path: '/storage/products/pocket.webp' ) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
+                           
                         </a>
                         <div class="p-4">
                             <h3 class="text-lg font-semibold text-gray-800">{{ $product->name }}</h3>
