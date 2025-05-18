@@ -25,34 +25,85 @@
                             <span class="text-white text-xl font-bold">Flower Shop Admin</span>
                         </div>
                         <nav class="mt-5 flex-1 px-2 space-y-1">
-                            <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'bg-pink-900 text-white' : 'text-pink-100 hover:bg-pink-700' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                Dashboard
-                            </a>
-
-                            <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.*') ? 'bg-pink-900 text-white' : 'text-pink-100 hover:bg-pink-700' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                                </svg>
-                                Products
-                            </a>
-
-                            <a href="{{ route('admin.orders.index') }}" class="{{ request()->routeIs('admin.orders.*') ? 'bg-pink-900 text-white' : 'text-pink-100 hover:bg-pink-700' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                </svg>
-                                Orders
-                            </a>
-
-                            <a href="{{ route('home') }}" class="text-pink-100 hover:bg-pink-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                                </svg>
-                                Back to Store
-                            </a>
-                        </nav>
+    <div class="mb-2 text-xs uppercase text-pink-200 tracking-wider">Gestion boutique</div>
+    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'bg-pink-900 text-white' : 'text-pink-100 hover:bg-pink-700' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        Dashboard
+    </a>
+    <!-- PRODUITS -->
+    <div class="relative group">
+        <button onclick="toggleSubMenu('products-submenu')" type="button" class="w-full flex items-center px-2 py-2 text-sm font-medium rounded-md text-pink-100 hover:bg-pink-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
+            Produits
+            <svg class="ml-auto h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="products-submenu" class="hidden ml-8 mt-1 space-y-1">
+            <a href="{{ route('admin.products.index') }}" class="block text-pink-100 hover:bg-pink-700 rounded px-2 py-1">Lister</a>
+            <a href="{{ route('admin.products.create') }}" class="block text-pink-100 hover:bg-pink-700 rounded px-2 py-1">Ajouter</a>
+        </div>
+    </div>
+    <!-- COMMANDES -->
+    <div class="relative group">
+        <button onclick="toggleSubMenu('orders-submenu')" type="button" class="w-full flex items-center px-2 py-2 text-sm font-medium rounded-md text-pink-100 hover:bg-pink-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            Commandes
+            <svg class="ml-auto h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="orders-submenu" class="hidden ml-8 mt-1 space-y-1">
+            <a href="{{ route('admin.orders.index') }}" class="block text-pink-100 hover:bg-pink-700 rounded px-2 py-1">Lister</a>
+        </div>
+    </div>
+    <!-- CATEGORIES -->
+    <div class="relative group">
+        <button onclick="toggleSubMenu('categories-submenu')" type="button" class="w-full flex items-center px-2 py-2 text-sm font-medium rounded-md text-pink-100 hover:bg-pink-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6M4 17h16M4 21h16" /></svg>
+            Catégories
+            <svg class="ml-auto h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="categories-submenu" class="hidden ml-8 mt-1 space-y-1">
+            <a href="{{ route('admin.categories.index') }}" class="block text-pink-100 hover:bg-pink-700 rounded px-2 py-1">Lister</a>
+            <a href="{{ route('admin.categories.create') }}" class="block text-pink-100 hover:bg-pink-700 rounded px-2 py-1">Ajouter</a>
+        </div>
+    </div>
+    <div class="my-3 border-t border-pink-700"></div>
+    <div class="mb-2 text-xs uppercase text-pink-200 tracking-wider">Autres tables</div>
+    <span class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-pink-400 cursor-not-allowed opacity-60" title="À venir">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Clients
+    </span>
+    <span class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-pink-400 cursor-not-allowed opacity-60" title="À venir">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+        Articles
+    </span>
+    <span class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-pink-400 cursor-not-allowed opacity-60" title="À venir">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6" />
+        </svg>
+        Modes de règlement
+    </span>
+    <a href="{{ route('home') }}" class="text-pink-100 hover:bg-pink-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 h-6 w-6 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Retour à la boutique
+    </a>
+</nav>
+<script>
+function toggleSubMenu(id) {
+    const el = document.getElementById(id);
+    if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+    } else {
+        el.classList.add('hidden');
+    }
+}
+</script>
                     </div>
                     <div class="flex-shrink-0 flex border-t border-pink-700 p-4">
                         <div class="flex-shrink-0 w-full group block">
@@ -182,7 +233,7 @@
 
                             <!-- Page Content -->
                             <div class="py-4">
-                                {{ $slot }}
+                                @yield('content')
                             </div>
                         </div>
                     </div>
