@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Models\Category;
@@ -19,7 +19,7 @@ class CategoryController extends AdminController
             ->orderBy('sort_order')
             ->paginate(15);
             
-        return $this->render('admin.categories.index', compact('categories'));
+        return $this->render('admin.category.index', compact('categories'));
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends AdminController
     {
         $parentCategories = Category::whereNull('parent_id')->orderBy('name')->get();
         
-        return $this->render('admin.categories.create', compact('parentCategories'));
+        return $this->render('admin.category.create', compact('parentCategories'));
     }
 
     /**
@@ -62,7 +62,7 @@ class CategoryController extends AdminController
 
         Category::create($validated);
 
-        return redirect()->route('admin.categories.index')
+        return redirect()->route('admin.category.index')
             ->with('success', 'Category created successfully.');
     }
 
@@ -76,7 +76,7 @@ class CategoryController extends AdminController
             ->orderBy('name')
             ->get();
             
-        return $this->render('admin.categories.edit', compact('category', 'parentCategories'));
+        return $this->render('admin.category.edit', compact('category', 'parentCategories'));
     }
 
     /**
@@ -114,7 +114,7 @@ class CategoryController extends AdminController
 
         $category->update($validated);
 
-        return redirect()->route('admin.categories.index')
+        return redirect()->route('admin.category.index')
             ->with('success', 'Category updated successfully.');
     }
 
@@ -125,7 +125,7 @@ class CategoryController extends AdminController
     {
         // Check if category has products
         if ($category->products()->count() > 0) {
-            return redirect()->route('admin.categories.index')
+            return redirect()->route('admin.category.index')
                 ->with('error', 'Cannot delete category with associated products.');
         }
 
@@ -143,7 +143,7 @@ class CategoryController extends AdminController
 
         $category->delete();
 
-        return redirect()->route('admin.categories.index')
+        return redirect()->route('admin.category.index')
             ->with('success', 'Category deleted successfully.');
     }
 }

@@ -1,11 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800  leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.admin')
 
-    <div class="py-12">
+@section('content')
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2 class="font-semibold text-xl text-gray-800  leading-tight mb-6">
+            Tableau de bord administrateur
+        </h2>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Stats Overview -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
@@ -19,7 +19,7 @@
                             </div>
                             <div class="ml-4">
                                 <h2 class="font-semibold text-xl">{{ $totalProducts }}</h2>
-                                <p class="text-gray-500 ">Products</p>
+                                <p class="text-gray-500 ">Produits</p>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="ml-4">
                                 <h2 class="font-semibold text-xl">{{ $totalOrders }}</h2>
-                                <p class="text-gray-500 ">Orders</p>
+                                <p class="text-gray-500 ">Commandes</p>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="ml-4">
                                 <h2 class="font-semibold text-xl">${{ number_format($totalRevenue ?? 0, 2) }}</h2>
-                                <p class="text-gray-500 ">Revenue</p>
+                                <p class="text-gray-500 ">Chiffre d'affaires</p>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="ml-4">
                                 <h2 class="font-semibold text-xl">{{ $totalCustomers ?? 0 }}</h2>
-                                <p class="text-gray-500 ">Customers</p>
+                                <p class="text-gray-500 ">Clients</p>
                             </div>
                         </div>
                     </div>
@@ -79,18 +79,18 @@
                 <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 ">
                         <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-lg font-semibold">Recent Orders</h2>
-                            <a href="{{ route('admin.orders.index') }}" class="text-sm text-pink-600 hover:text-pink-800  ">View All</a>
+                            <h2 class="text-lg font-semibold">Commandes récentes</h2>
+                            <a href="{{ route('admin.orders.index') }}" class="text-sm text-pink-600 hover:text-pink-800  ">Voir tout</a>
                         </div>
                         
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200 ">
                                 <thead class="bg-gray-50 ">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Order</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Customer</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Commande</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Client</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Total</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Status</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Statut</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white  divide-y divide-gray-200 ">
@@ -129,8 +129,8 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500  text-center">
-                                                No recent orders.
+                                            <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                                Aucune commande récente trouvée.
                                             </td>
                                         </tr>
                                     @endforelse
@@ -144,16 +144,16 @@
                 <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 ">
                         <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-lg font-semibold">Low Stock Alert</h2>
-                            <a href="{{ route('admin.products.index') }}" class="text-sm text-pink-600 hover:text-pink-800  ">View All Products</a>
+                            <h2 class="text-lg font-semibold">Alerte stock faible</h2>
+                            <a href="{{ route('admin.products.index') }}" class="text-sm text-pink-600 hover:text-pink-800  ">Voir tous les produits</a>
                         </div>
                         
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200 ">
                                 <thead class="bg-gray-50 ">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Product</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Current Stock</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Produit</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Stock actuel</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">Action</th>
                                     </tr>
                                 </thead>
@@ -167,7 +167,7 @@
                                                             <img class="h-10 w-10 rounded-full object-cover" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                                                         @else
                                                             <div class="h-10 w-10 rounded-full bg-gray-200  flex items-center justify-center">
-                                                                <span class="text-xs text-gray-500 ">No img</span>
+                                                                <span class="text-xs text-gray-500 ">Pas d'image</span>
                                                             </div>
                                                         @endif
                                                     </div>
@@ -180,17 +180,17 @@
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $product->stock == 0 ? 'bg-red-100 text-red-800  ' : 'bg-yellow-100 text-yellow-800  ' }}">
-                                                    {{ $product->stock }} in stock
+                                                    {{ $product->stock }} en stock
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <a href="{{ route('admin.products.edit', $product) }}" class="text-pink-600 hover:text-pink-900  ">Update Stock</a>
+                                                <a href="{{ route('admin.products.edit', $product) }}" class="text-pink-600 hover:text-pink-900  ">Mettre à jour le stock</a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500  text-center">
-                                                No low stock products.
+                                            <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                                Aucun produit en stock faible.
                                             </td>
                                         </tr>
                                     @endforelse
@@ -202,4 +202,5 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
