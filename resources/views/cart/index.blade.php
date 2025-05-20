@@ -126,23 +126,20 @@
                             </div>
                             
                             <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-8">
-                                <div class="flex flex-col space-y-4">
+                                <div class="flex justify-between space-y-4">
                                     <a href="{{ route('products.index') }}" class="text-pink-600  hover:text-pink-800  flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                                         </svg>
                                         Continue Shopping
                                     </a>
-                                    
-                                    <form action="{{ route('cart.clear') }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="text-gray-600  hover:text-gray-800  flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                            Clear Cart
+                                    <form action="{{ route('checkout.index') }}" method="GET">
+                                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-pink-600  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-pink-700 active:bg-pink-800 focus:outline-none focus:border-pink-800 focus:ring focus:ring-pink-200 disabled:opacity-25 transition">
+                                            Proceed to Checkout
                                         </button>
+
                                     </form>
+                                    
                                 </div>
                                 
                                 <div class="mt-8">
@@ -154,6 +151,7 @@
                                         </button>
                                     </form>
                                 </div>
+                                
                             </div>
                         </div>
                     @else

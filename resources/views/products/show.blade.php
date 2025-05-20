@@ -107,18 +107,7 @@
                                     </div>
                                 </form>
                                 
-                                <!-- Wishlist Button (if you have this feature) -->
-                                <div class="mt-4">
-                                    <form action="{{ route('wishlist.toggle', $product) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="w-full flex items-center justify-center px-6 py-3 border border-gray-300  rounded-md shadow-sm text-base font-medium text-gray-700  bg-white  hover:bg-gray-50  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 {{ in_array($product->id, session('wishlist', [])) ? 'text-pink-500' : 'text-gray-400' }}" fill="{{ in_array($product->id, session('wishlist', [])) ? 'currentColor' : 'none' }}" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                            </svg>
-                                            {{ in_array($product->id, session('wishlist', [])) ? 'Remove from Wishlist' : 'Add to Wishlist' }}
-                                        </button>
-                                    </form>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -197,11 +186,7 @@
                                     <p class="text-gray-500 ">No reviews yet. Be the first to review this product!</p>
                                     
                                     @auth
-                                        <div class="mt-6">
-                                            <a href="{{ route('products.review', $product) }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-                                                Write a Review
-                                            </a>
-                                        </div>
+
                                     @else
                                         <div class="mt-6">
                                             <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">

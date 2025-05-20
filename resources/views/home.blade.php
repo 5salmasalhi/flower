@@ -32,7 +32,7 @@
                     <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                         <a href="{{ route('products.show', $product) }}">
                            
-                                <img src="{{ asset(path: '/storage/products/pocket.webp' ) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
                            
                         </a>
                         <div class="p-4">
