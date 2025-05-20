@@ -14,15 +14,15 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Product::where('is_active', true)->where('stock', '>', 0);
-        
+        $query = Product::where('is_active', true);
+
         // Apply category filter
         if ($request->has('category')) {
             $query->whereHas('category', function($q) use ($request) {
                 $q->where('slug', $request->category);
             });
         }
-        
+
         // Apply search filter
         if ($request->has('search') && !empty($request->search)) {
             $search = $request->search;
@@ -31,10 +31,10 @@ class ProductController extends Controller
                   ->orWhere('description', 'like', "%{$search}%");
             });
         }
-        
-        $products = $query->latest()->paginate(12);
+
+        $products = $query->latest()->paginate(12)->withQueryString();
         $categories = Category::all();
-        
+
         return view('products.index', compact('products', 'categories'));
     }
 

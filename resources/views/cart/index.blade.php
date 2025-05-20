@@ -120,7 +120,7 @@
                                     <span class="text-lg font-medium text-gray-900 ">${{ number_format($total, 2) }}</span>
                                 </div>
                                 
-                                <a href="{{ route('cart.checkout') }}" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-md transition-colors duration-300 flex items-center justify-center">
+                                <a href="{{ route('checkout.index') }}" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-md transition-colors duration-300 flex items-center justify-center">
                                     Proceed to Checkout
                                 </a>
                             </div>
