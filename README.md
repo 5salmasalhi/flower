@@ -1,66 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# FleurShop - Application de Vente de Fleurs en Ligne
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/images/logo.jpg" alt="FleurShop Logo" width="200">
 </p>
 
-## About Laravel
+## 📝 Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+FleurShop est une application web e-commerce moderne développée avec Laravel, conçue pour la vente de fleurs en ligne. Elle offre une expérience utilisateur fluide et intuitive pour acheter des fleurs et des arrangements floraux.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fonctionnalités
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🏬 Pour les Clients
+- Parcourir le catalogue de produits avec recherche en temps réel
+- Filtrer les produits par catégorie
+- Ajouter des produits au panier
+- Gérer le panier d'achat (modifier quantités, supprimer articles)
+- Processus de paiement sécurisé
+- Création de compte et authentification
+- Historique des commandes
 
-## Learning Laravel
+### 👨‍💼 Pour les Administrateurs
+- Tableau de bord d'administration
+- Gestion des produits (CRUD)
+- Gestion des catégories
+- Suivi des commandes
+- Gestion des utilisateurs
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Technologies Utilisées
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Backend:** Laravel 10.x
+- **Frontend:** 
+  - Blade Templates
+  - Alpine.js pour l'interactivité
+  - Tailwind CSS pour le style
+- **Base de données:** MySQL
+- **Authentification:** Laravel Breeze
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Prérequis
 
-## Laravel Sponsors
+- PHP >= 8.1
+- Composer
+- Node.js & NPM
+- MySQL
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Installation
 
-### Premium Partners
+1. Cloner le dépôt :
+```bash
+git clone [url-du-repo]
+cd flower
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. Installer les dépendances PHP :
+```bash
+composer install
+```
 
-## Contributing
+3. Installer les dépendances JavaScript :
+```bash
+npm install
+npm run build
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Configurer l'environnement :
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+5. Configurer la base de données dans `.env` :
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=flower
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. Migrer la base de données :
+```bash
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+7. Lancer le serveur :
+```bash
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🎨 Structure de l'Application
 
-## License
+### Routes Principales
+- `/` - Page d'accueil
+- `/products` - Catalogue de produits
+- `/cart` - Panier d'achat
+- `/checkout` - Processus de paiement
+- `/admin/*` - Interface d'administration
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Composants Principaux
+- `ProductController` - Gestion des produits et recherche
+- `CartController` - Gestion du panier
+- `CheckoutController` - Processus de paiement
+- `AdminController` - Fonctionnalités d'administration
+
+## 👥 Rôles Utilisateurs
+
+### Client
+- Parcourir les produits
+- Gérer son panier
+- Passer des commandes
+- Voir son historique
+
+### Administrateur
+- Gérer les produits
+- Gérer les catégories
+- Gérer les commandes
+- Voir les statistiques
+
+## 🔒 Sécurité
+
+- Authentification sécurisée avec Laravel Breeze
+- Protection CSRF sur tous les formulaires
+- Validation des données côté serveur
+- Middleware d'administration
+
+## 🎯 Fonctionnalités à Venir
+
+- [ ] Système de notation des produits
+- [ ] Wishlist pour les clients
+- [ ] Notifications par email
+- [ ] Interface multilingue
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
