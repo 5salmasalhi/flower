@@ -1,4 +1,25 @@
 <x-app-layout>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('searchProducts', () => ({
+                search: '{{ request('search') }}',
+                async fetchProducts() {
+                    const params = new URLSearchParams()
+                    if (this.search) params.append('search', this.search)
+                    if (this.$root.dataset.category) params.append('category', this.$root.dataset.category)
+                    
+                    try {
+                        const response = await fetch(`{{ route('products.search') }}?${params.toString()}`)
+                        if (!response.ok) throw new Error('Network response was not ok')
+                        const data = await response.json()
+                        this.$refs.productsGrid.innerHTML = data.html
+                    } catch (error) {
+                        console.error('Error:', error)
+                    }
+                }
+            }))
+        })
+    </script>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ __('Our Flowers') }}
@@ -26,22 +47,28 @@
                 </div>
             </div>
 
-            <!-- Search Bar -->
-            <div class="mb-8">
-                <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6">
-                        <form action="{{ route('products.index') }}" method="GET" class="flex">
-                            <input type="text" name="search" placeholder="Search for flowers..." value="{{ request('search') }}" class="flex-1 rounded-l-md border-gray-300    focus:border-pink-500 focus:ring-pink-500">
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-pink-500 border border-transparent rounded-r-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-pink-600 active:bg-pink-700 focus:outline-none focus:border-pink-700 focus:ring focus:ring-pink-300 disabled:opacity-25 transition">
-                                Search
-                            </button>
-                        </form>
+            <!-- Search Bar and Products Grid Container -->
+            <div x-data="searchProducts" data-category="{{ request('category') }}">
+                <div class="mb-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6">
+                            <div class="flex">
+                                <input 
+                                    type="text" 
+                                    x-model="search" 
+                                    x-on:input.debounce.300ms="fetchProducts()"
+                                    placeholder="Search for flowers..." 
+                                    class="flex-1 rounded-md border-gray-300 focus:border-pink-500 focus:ring-pink-500"
+                                >
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Products Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Products Grid -->
+                <div 
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+                    x-ref="productsGrid">
                 @forelse ($products as $product)
                     <div class="bg-white  overflow-hidden shadow-sm rounded-lg transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                         <a href="{{ route('products.show', $product) }}" class="block">

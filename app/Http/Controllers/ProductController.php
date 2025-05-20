@@ -10,6 +10,37 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     /**
+     * Search products via AJAX.
+     */
+    public function search(Request $request)
+    {
+        $query = Product::where('is_active', true);
+
+        // Apply category filter
+        if ($request->has('category')) {
+            $query->whereHas('category', function($q) use ($request) {
+                $q->where('slug', $request->category);
+            });
+        }
+
+        // Apply search filter
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        $products = $query->latest()->paginate(12);
+        
+        return response()->json([
+            'html' => view('products.partials.product-grid', compact('products'))->render(),
+            'hasMorePages' => $products->hasMorePages()
+        ]);
+    }
+
+    /**
      * Display a listing of the products.
      */
     public function index(Request $request)
