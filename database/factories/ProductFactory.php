@@ -16,7 +16,7 @@ class ProductFactory extends Factory
             'slug' => $this->faker->unique()->slug,
             'description' => $this->faker->sentence(10),
             'price' => $this->faker->randomFloat(2, 5, 150),
-            'image' => 'https://source.unsplash.com/400x400/?flower,' . $this->faker->unique()->word,
+            'image' => 'products/pocket.webp',
             'stock' => $this->faker->numberBetween(0, 50),
             'is_featured' => $this->faker->boolean(20),
             'is_active' => $this->faker->boolean(90),
