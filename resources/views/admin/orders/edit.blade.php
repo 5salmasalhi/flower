@@ -49,16 +49,13 @@
                                                     class="text-gray-900">{{ $order->created_at->format('M d, Y') }}</span>
                                             </p>
                                             <p class="text-sm text-gray-500">Customer: <span
-                                                    class="text-gray-900">{{ $order->customer_name }}</span></p>
+                                                    class="text-gray-900">{{ $order->first_name . ' ' . $order->last_name }}</span></p>
                                             <p class="text-sm text-gray-500">Email: <span
-                                                    class="text-gray-900">{{ $order->customer_email }}</span></p>
+                                                    class="text-gray-900">{{ $order->email }}</span></p>
                                         </div>
                                         <div>
                                             <p class="text-sm text-gray-500">Total: <span
                                                     class="text-gray-900">${{ number_format($order->total, 2) }}</span></p>
-                                            <p class="text-sm text-gray-500">Items: <span
-                                                    class="text-gray-900">{{ $order->products->sum('pivot.quantity') }}</span>
-                                            </p>
                                             <p class="text-sm text-gray-500">Current Status:
                                                 <span>
                                                     @if ($order->status == 'pending')

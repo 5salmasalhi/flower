@@ -58,9 +58,9 @@
                                                             {{ $item['product']->name }}
                                                         </a>
                                                         @if ($item['product']->category)
-                                                            <div class="text-xs text-gray-500  mt-1">
-                                                                {{ $item['product']->category->name }}
-                                                            </div>
+                                                        <div class="text-xs text-gray-500  mt-1">
+                                                            {{ $item['product']->category->name }}
+                                                        </div>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -119,10 +119,12 @@
                                     <span class="text-lg font-medium text-gray-900 ">Estimated Total</span>
                                     <span class="text-lg font-medium text-gray-900 ">${{ number_format($total, 2) }}</span>
                                 </div>
+                                <form action="{{ route('checkout.index') }}" method="GET">
                                 
-                                <a href="{{ route('checkout.index') }}" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-md transition-colors duration-300 flex items-center justify-center">
-                                    Proceed to Checkout
-                                </a>
+                                    <button class="w-full cursor-pointer bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-md transition-colors duration-300 flex items-center justify-center">
+                                        Proceed to Checkout
+                                    </button>
+                                </form>
                             </div>
                             
                             <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-8">
@@ -133,13 +135,6 @@
                                         </svg>
                                         Continue Shopping
                                     </a>
-                                    <form action="{{ route('checkout.index') }}" method="GET">
-                                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-pink-600  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-pink-700 active:bg-pink-800 focus:outline-none focus:border-pink-800 focus:ring focus:ring-pink-200 disabled:opacity-25 transition">
-                                            Proceed to Checkout
-                                        </button>
-
-                                    </form>
-                                    
                                 </div>
                                 
                                 <div class="mt-8">

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('stock')->default(0);
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_active')->default(true);
+            $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->timestamps();
         });
     }

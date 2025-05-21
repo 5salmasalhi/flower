@@ -76,10 +76,6 @@ class CheckoutController extends Controller
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:20',
-            'country' => 'required|string|max:2',
             'payment_method' => 'required|in:card,paypal',
             'notes' => 'nullable|string',
         ]);
@@ -132,10 +128,6 @@ class CheckoutController extends Controller
                 'email' => $validated['email'],
                 'phone' => $validated['phone'],
                 'address' => $validated['address'],
-                'city' => $validated['city'],
-                'state' => $validated['state'],
-                'postal_code' => $validated['postal_code'],
-                'country' => $validated['country'],
                 'payment_method' => $validated['payment_method'],
                 'subtotal' => $subtotal,
                 'shipping' => $shipping,
@@ -180,11 +172,11 @@ class CheckoutController extends Controller
     public function thankyou(Order $order)
     {
         // Ensure the order belongs to the current user or is a guest order with matching email
-        if (Auth::check() && $order->user_id !== Auth::id()) {
-            abort(403);
-        } elseif (!Auth::check() && !session()->has('guest_order_' . $order->id)) {
-            abort(403);
-        }
+        // if (Auth::check() && $order->user_id !== Auth::id()) {
+        //     abort(403);
+        // } elseif (!Auth::check() && !session()->has('guest_order_' . $order->id)) {
+        //     abort(403);
+        // }
         
         return view('checkout.thankyou', compact('order'));
     }

@@ -6,11 +6,14 @@
         }
 
         .form-container {
-            background: rgb(168, 40, 40);
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 2rem;
+            border: 1px solid rgb(168, 40, 40);
+            color: black;
+
         }
 
         .welcome-text {
@@ -19,14 +22,14 @@
         }
 
         .welcome-text h1 {
-            color: #fff;
+            /* color: #fff; */
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .welcome-text p {
-            color: #fff;
+            /* color: #fff; */
             font-size: 1rem;
             opacity: 0.9;
         }
@@ -41,25 +44,28 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
+            /* color: rgba(255, 255, 255, 0.8); */
             pointer-events: none;
         }
 
         .form-input {
             width: 100%;
             background: rgba(255, 255, 255, 0.1) !important;
-            border: none !important;
-            color: #fff !important;
+            /* border: none !important; */
+            border: 2px solid rgb(168, 40, 40);
+
+            /* color: #fff !important; */
             padding-left: 2.5rem !important;
         }
 
         .form-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) !important;
+            /* outline: none !important; */
+            /* border: 1px solid rgb(168, 40, 40); */
+                        
         }
 
         .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
+            /* color: rgba(255, 255, 255, 0.8); */
         }
 
         .remember-forgot {
@@ -73,35 +79,39 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #fff;
+            border-radius: 20px;
+            /* color: #fff; */
         }
 
         .forgot-password {
-            color: #fff;
+            /* color: #fff; */
             text-decoration: none;
             font-size: 0.875rem;
         }
 
         .login-btn {
             width: 100%;
-            background: rgba(255, 255, 255, 0.1) !important;
-            color: #fff !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(168, 40, 40) !important;
+            /* color: #fff !important; */
             border: none !important;
             transition: background 0.3s;
         }
 
         .login-btn:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 40, 40) !important;
         }
 
         .register-link {
             text-align: center;
-            color: #fff;
+            /* color: #fff; */
             margin-top: 1rem;
         }
 
         .register-link a {
-            color: #fff;
+            /* color: #fff; */
             text-decoration: none;
             font-weight: 500;
         }
@@ -110,7 +120,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <div class="form-container">
+    <div class="form-container ">
         <div class="welcome-text">
             <h1>Welcome Back</h1>
             <p>Please login to your account to access our flower shop services.</p>

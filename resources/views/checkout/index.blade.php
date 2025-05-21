@@ -67,49 +67,6 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                                    <div>
-                                        <label for="city" class="block text-sm font-medium text-gray-700 ">City</label>
-                                        <input type="text" name="city" id="city" value="{{ old('city', auth()->user()->city ?? '') }}" class="mt-1 block w-full rounded-md border-gray-300    shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
-                                        @error('city')
-                                            <p class="mt-1 text-sm text-red-600 ">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    
-                                    <div>
-                                        <label for="state" class="block text-sm font-medium text-gray-700 ">State/Province</label>
-                                        <input type="text" name="state" id="state" value="{{ old('state', auth()->user()->state ?? '') }}" class="mt-1 block w-full rounded-md border-gray-300    shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
-                                        @error('state')
-                                            <p class="mt-1 text-sm text-red-600 ">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                                    <div>
-                                        <label for="postal_code" class="block text-sm font-medium text-gray-700 ">Postal/ZIP Code</label>
-                                        <input type="text" name="postal_code" id="postal_code" value="{{ old('postal_code', auth()->user()->postal_code ?? '') }}" class="mt-1 block w-full rounded-md border-gray-300    shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
-                                        @error('postal_code')
-                                            <p class="mt-1 text-sm text-red-600 ">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    
-                                    <div>
-                                        <label for="country" class="block text-sm font-medium text-gray-700 ">Country</label>
-                                        <select name="country" id="country" class="mt-1 block w-full rounded-md border-gray-300    shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
-                                            <option value="">Select Country</option>
-                                            <option value="US" {{ old('country', auth()->user()->country ?? '') == 'US' ? 'selected' : '' }}>United States</option>
-                                            <option value="CA" {{ old('country', auth()->user()->country ?? '') == 'CA' ? 'selected' : '' }}>Canada</option>
-                                            <option value="GB" {{ old('country', auth()->user()->country ?? '') == 'GB' ? 'selected' : '' }}>United Kingdom</option>
-                                            <option value="AU" {{ old('country', auth()->user()->country ?? '') == 'AU' ? 'selected' : '' }}>Australia</option>
-                                            <!-- Add more countries as needed -->
-                                        </select>
-                                        @error('country')
-                                            <p class="mt-1 text-sm text-red-600 ">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
                                 <div class="mb-4">
                                     <label for="notes" class="block text-sm font-medium text-gray-700 ">Order Notes (Optional)</label>
                                     <textarea name="notes" id="notes" rows="3" class="mt-1 block w-full rounded-md border-gray-300    shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50">{{ old('notes') }}</textarea>

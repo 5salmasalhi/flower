@@ -1,15 +1,17 @@
 <x-guest-layout>
     <style>
         .form-container {
-            background: rgb(168, 40, 40);
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 2rem;
+            border: 1px solid rgb(168, 40, 40);
+            color: black;
         }
 
         .form-title {
-            color: #fff;
+            /* color: #fff; */
             font-size: 28px;
             font-weight: 600;
             text-align: center;
@@ -22,7 +24,7 @@
         }
 
         .form-label {
-            color: #fff;
+            /* color: #fff; */
             font-size: 14px;
             margin-bottom: 0.5rem;
             display: block;
@@ -37,18 +39,18 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
+            /* color: rgba(255, 255, 255, 0.8); */
             pointer-events: none;
         }
 
         .form-input {
-            width: 100%;
+             width: 100%;
             background: rgba(255, 255, 255, 0.1) !important;
-            border: none !important;
-            color: #fff !important;
+            /* border: none !important; */
+            border: 2px solid rgb(168, 40, 40);
+
+            /* color: #fff !important; */
             padding-left: 2.5rem !important;
-            height: 45px;
-            border-radius: 12px !important;
         }
 
         .form-input:focus {
@@ -57,7 +59,7 @@
         }
 
         .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
+            /* color: rgba(255, 255, 255, 0.8); */
         }
 
         .password-toggle {
@@ -67,7 +69,7 @@
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.8);
+            /* color: rgba(255, 255, 255, 0.8); */
             cursor: pointer;
             padding: 0;
         }
@@ -80,23 +82,25 @@
         }
 
         .login-link {
-            color: #fff !important;
+            /* color: #fff !important; */
             text-decoration: none !important;
             font-size: 14px;
             opacity: 0.9;
         }
 
         .register-btn {
-            background: rgba(255, 255, 255, 0.1) !important;
+            /* width: 100%; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(168, 40, 40) !important;
+            /* color: #fff !important; */
             border: none !important;
-            border-radius: 12px !important;
-            color: #fff !important;
-            padding: 0.75rem 1.5rem !important;
             transition: background 0.3s;
         }
 
         .register-btn:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 40, 40) !important;
         }
 
         .error-message {

@@ -47,8 +47,8 @@
                                                 {{ $order->order_number }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
-                                                <div>{{ $order->customer_name }}</div>
-                                                <div class="text-xs">{{ $order->customer_email }}</div>
+                                                <div>{{ $order->first_name . ' ' . $order->last_name }}</div>
+                                                <div class="text-xs">{{ $order->email }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
                                                 {{ $order->created_at->format('M d, Y') }}

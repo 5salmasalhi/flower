@@ -18,10 +18,6 @@ class Order extends Model
         'email',
         'phone',
         'address',
-        'city',
-        'state',
-        'postal_code',
-        'country',
         'payment_method',
         'subtotal',
         'shipping',
@@ -35,12 +31,6 @@ class Order extends Model
         'total' => 'decimal:2',
     ];
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class)
-            ->withPivot('quantity', 'price')
-            ->withTimestamps();
-    }
 
     public function items()
     {

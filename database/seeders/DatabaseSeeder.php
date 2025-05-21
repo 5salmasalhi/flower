@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
-            OrderSeeder::class,
-            ClientSeeder::class,
+            // OrderSeeder::class,
+            // ClientSeeder::class,
         ]);
 
         \App\Models\User::create([

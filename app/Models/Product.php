@@ -18,6 +18,7 @@ class Product extends Model
         'stock',
         'is_featured',
         'is_active',
+        'category_id',
     ];
 
     protected $casts = [
@@ -31,10 +32,4 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class)
-            ->withPivot('quantity', 'price')
-            ->withTimestamps();
-    }
 }

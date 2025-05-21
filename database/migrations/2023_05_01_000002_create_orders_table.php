@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('postal_code');
-            $table->string('country');
             $table->string('payment_method');
             $table->decimal('subtotal', 10, 2);
             $table->decimal('shipping', 10, 2);

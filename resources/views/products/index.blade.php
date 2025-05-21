@@ -70,7 +70,7 @@
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
                     x-ref="productsGrid">
                 @forelse ($products as $product)
-                    <div class="bg-white  overflow-hidden shadow-sm rounded-lg transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="bg-white relative overflow-hidden shadow-sm rounded-lg transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                         <a href="{{ route('products.show', $product) }}" class="block">
                             <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 ">
                                 @if ($product->image)

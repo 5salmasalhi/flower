@@ -60,22 +60,20 @@
                                 <div class="mt-4 space-y-3">
                                     <div class="flex justify-between">
                                         <span class="text-gray-500">Name:</span>
-                                        <span>{{ $order->customer_name }}</span>
+                                        <span>{{ $order->first_name . ' ' . $order->last_name }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-500">Email:</span>
-                                        <span>{{ $order->customer_email }}</span>
+                                        <span>{{ $order->email }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-500">Phone:</span>
-                                        <span>{{ $order->customer_phone ?? 'N/A' }}</span>
+                                        <span>{{ $order->phone ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-500">Address:</span>
                                         <span class="text-right">
-                                            {{ $order->address }}<br>
-                                            {{ $order->city }}, {{ $order->state ?? '' }} {{ $order->postal_code }}<br>
-                                            {{ $order->country }}
+                                            {{ $order->address }}
                                         </span>
                                     </div>
                                 </div>
@@ -111,15 +109,15 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    @foreach ($order->products as $product)
+                                    @foreach ($order->items as $item)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0 h-10 w-10">
-                                                        @if ($product->image)
+                                                        @if ($item->product->image)
                                                             <img class="h-10 w-10 rounded-full object-cover"
-                                                                src="{{ asset('storage/' . $product->image) }}"
-                                                                alt="{{ $product->name }}">
+                                                                src="{{ asset('storage/' . $item->product->image) }}"
+                                                                alt="{{ $item->product->name }}">
                                                         @else
                                                             <div
                                                                 class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
@@ -129,19 +127,19 @@
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            {{ $product->name }}
+                                                            {{ $item->product->name }}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                ${{ number_format($product->pivot->price, 2) }}
+                                                ${{ number_format($item->product->price, 2) }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $product->pivot->quantity }}
+                                                {{ $item->quantity }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                ${{ number_format($product->pivot->price * $product->pivot->quantity, 2) }}
+                                                ${{ number_format($item->product->price * $item->product->quantity, 2) }}
                                             </td>
                                         </tr>
                                     @endforeach

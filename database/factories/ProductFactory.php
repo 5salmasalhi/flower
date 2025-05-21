@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'stock' => $this->faker->numberBetween(0, 50),
             'is_featured' => $this->faker->boolean(20),
             'is_active' => $this->faker->boolean(90),
+            'category_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
